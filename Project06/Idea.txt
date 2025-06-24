@@ -1,0 +1,83 @@
+Project 6: Multi-Tier Web App Deployment – Deploy an application with VPC, 
+ALB, EC2, and RDS. 
+A Multi-Tier Web Application architecture enhances scalability, security, and 
+maintainability by separating concerns into multiple layers. This project deploys a 
+web application on AWS using a Virtual Private Cloud (VPC), Application 
+Load Balancer (ALB), EC2 instances for the web and application layers, and 
+RDS (Relational Database Service) for the database layer. 
+Complete Steps for Deployment 
+
+
+Step 1: Set Up the VPC 
+1. Go to the AWS Management Console → VPC. 
+2. Create a new VPC (e.g., 10.0.0.0/16). 
+3. Create two subnets: 
+○ Public Subnet (for ALB & Bastion Host) (e.g., 10.0.1.0/24). 
+○ Private Subnet (for EC2 App & RDS) (e.g., 10.0.2.0/24). 
+4. Create an Internet Gateway (IGW) and attach it to the VPC. 
+5. Set up Route Tables: 
+○ Public subnet → Route to IGW. 
+○ Private subnet → Route to NAT Gateway (for internet access from 
+private instances). 
+
+
+Step 2: Launch EC2 Instances 
+1. Go to EC2 Dashboard → Launch Instance. 
+2. Create a Bastion Host in the public subnet for SSH access. 
+3. Create Web Server EC2 instances in the private subnet. 
+Install required software on EC2 instances: 
+sudo yum update -y 
+sudo yum install -y httpd mysql 
+sudo systemctl start httpd 
+sudo systemctl enable httpd 
+4. Repeat for multiple instances if needed for load balancing. 
+
+
+Step 3: Set Up Application Load Balancer (ALB) 
+1. Go to EC2 Dashboard → Load Balancer → Create Load Balancer. 
+2. Choose Application Load Balancer. 
+3. Attach it to the public subnet. 
+4. Create a target group and register EC2 instances (web/app tier). 
+5. Configure health checks (/health endpoint). 
+6. Update Security Groups to allow HTTP/HTTPS. 
+
+
+Step 4: Deploy the Database (RDS) 
+1. Go to RDS → Create Database. 
+2. Select MySQL/PostgreSQL. 
+3. Choose Multi-AZ Deployment (for high availability). 
+4. Set up database credentials. 
+5. Place RDS in the private subnet. 
+6. Update security groups to allow only EC2 instances to connect. 
+
+
+Step 5: Configure Security Groups 
+● ALB Security Group → Allow HTTP (80) and HTTPS (443) from the 
+internet. 
+● Web/App EC2 Security Group → Allow HTTP (80) only from the ALB. 
+● Database Security Group → Allow MySQL/PostgreSQL (3306) only from 
+the Web/App layer. 
+
+
+Step 6: Deploy the Web Application 
+Upload application code to EC2: 
+sudo yum install -y git 
+git clone <your-repository> 
+cd <your-app> 
+1. Configure the database connection in your app. 
+2. Start the application. 
+
+
+Step 7: Testing & Scaling 
+1. Test the Application 
+○ Get the ALB DNS name and access the web app via a browser. 
+2. Enable Auto Scaling 
+○ Go to EC2 Auto Scaling Groups. 
+○ Configure a launch template for EC2 instances. 
+○ Set up scaling policies (e.g., scale up on high CPU usage). 
+
+
+Conclusion 
+This setup provides a scalable, highly available, and secure multi-tier web 
+application architecture on AWS. It ensures redundancy using ALB, Auto Scaling, 
+and RDS Multi-AZ, making it resilient to failures.

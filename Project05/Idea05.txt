@@ -1,0 +1,58 @@
+Project 5: Scalable Web App with NLB & Auto Scaling – Use EC2, ALB, and 
+Auto Scaling for high availability. 
+Overview: 
+In this project, we will deploy a scalable and highly available web application 
+using EC2 instances, Network Load Balancer (NLB), and Auto Scaling. This 
+setup ensures that our web application can handle varying traffic loads efficiently 
+while maintaining availability and reliability. 
+Steps to Implement the Project 
+
+1. Set Up EC2 Instances 
+● Launch multiple EC2 instances with a web server installed (e.g., Apache, 
+Nginx, or a custom application). 
+● Configure the security group to allow HTTP (port 80) and necessary ports 
+for application communication. 
+
+● Ensure the web server is properly configured to serve requests. 
+2. Create a Network Load Balancer (NLB) 
+● Navigate to EC2 > Load Balancers > Create Load Balancer. 
+● Select Network Load Balancer as the type. 
+● Choose the public subnets where your EC2 instances are running. 
+● Create a target group and register the EC2 instances. 
+● Configure the listener on port 80 (HTTP) and forward traffic to the target 
+group. 
+
+3. Configure Auto Scaling Group 
+● Create an Auto Scaling Group with a Launch Template or Launch 
+Configuration that defines: 
+○ EC2 instance type, AMI, security group, and key pair. 
+○ User data script to install the web server upon launch. 
+● Set the desired minimum, maximum, and desired capacity for instances. 
+● Define scaling policies to increase/decrease instances based on CPU 
+utilization or request load. 
+
+4. Enable Health Checks & Monitoring 
+● Configure NLB health checks to monitor instance health. 
+● Enable Auto Scaling health checks to replace unhealthy instances 
+automatically. 
+● Use Amazon CloudWatch to track metrics like request count, CPU 
+utilization, and instance activity. 
+
+5. Test the Setup 
+● Obtain the NLB DNS name and test the application in a browser. 
+● Simulate traffic using Apache Benchmark (ab) or Siege to verify Auto 
+Scaling behavior. 
+● Monitor the Auto Scaling Group to ensure new instances launch and 
+terminate as needed. 
+
+6. Optimize & Secure the Architecture 
+● Enable HTTPS using an AWS Certificate Manager (ACM) SSL certificate. 
+● Implement IAM roles for secure EC2 access. 
+● Use AWS WAF to protect against web threats. 
+● Enable CloudWatch alarms for proactive monitoring. 
+Outcome: 
+● A fully scalable, high-availability web application with automatic load 
+balancing and scaling. 
+● Improved performance, fault tolerance, and cost optimization through 
+Auto Scaling. 
+● Seamless user experience even under varying traffic conditions. 
