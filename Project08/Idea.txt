@@ -1,0 +1,60 @@
+Project 8: Multi-Tenant SaaS Application – Use Cognito, API Gateway, and 
+RDS for a multi-tenant SaaS solution. 
+A Multi-Tenant SaaS Application allows multiple customers (tenants) to use the 
+same application while keeping their data secure and isolated. AWS provides a 
+scalable solution using Cognito for authentication, API Gateway for managing 
+API requests, and RDS for structured data storage. This setup ensures security, 
+performance, and scalability for your SaaS platform. 
+
+Steps to Deploy a Multi-Tenant SaaS Application on AWS 
+
+1. Set Up AWS Cognito for User Authentication 
+● Go to the AWS Cognito service in the AWS Console. 
+● Create a User Pool to manage authentication for tenants. 
+● Enable Multi-Tenant Support using custom attributes (e.g., tenant_id). 
+● Configure authentication providers (Google, Facebook, or SAML-based 
+authentication if needed). 
+● Create an App Client to integrate with your application. 
+
+2. Create an RDS Database for Multi-Tenant Data Storage 
+● Go to Amazon RDS and create a new database (PostgreSQL or MySQL 
+recommended). 
+● Choose an instance type based on the expected load. 
+● Configure a multi-tenant database model: 
+○ Single database, shared schema (add tenant_id column in tables). 
+○ Single database, separate schema per tenant. 
+○ Database per tenant (useful for large enterprises). 
+
+3. Build APIs Using AWS API Gateway and Lambda 
+● Go to Amazon API Gateway and create a new REST API. 
+● Define API routes for different functionalities (e.g., /users, /orders). 
+● Use Cognito Authorizer to secure API access. 
+● Deploy Lambda functions to handle requests: 
+○ Create Lambda functions to interact with the RDS database. 
+○ Implement tenant isolation logic (ensure each tenant can access only  
+○ atus 
+    } 
+} 
+ 
+Use the listTasks query to retrieve all tasks: 
+graphql 
+ 
+query { 
+    listTasks { 
+        id 
+        title 
+        description 
+        status 
+    } 
+} 
+ 
+ 
+Step 6: Secure the API (Optional) 
+● Use AWS Cognito for user authentication. 
+● Enable IAM authentication for secure access. 
+
+
+Conclusion 
+You have successfully deployed a GraphQL API using AWS AppSync and 
+DynamoDB. This setup allows seamless CRUD operations with real-time updates, 
+making it an efficient backend solution for modern applications.
