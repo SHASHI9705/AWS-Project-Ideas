@@ -1,0 +1,42 @@
+Project 10: Jamstack Site with AWS – Use AWS Amplify, Headless CMS, and S3 
+for a Jamstack website. 
+Build a modern, fast, and scalable Jamstack website using AWS Amplify, a 
+Headless CMS, and S3 for static hosting. This approach decouples the frontend 
+from the backend, improving performance, security, and scalability. 
+Steps to Build the Jamstack Site with AWS 
+
+Step 1: Set Up AWS Amplify 
+1. Sign in to the AWS Management Console. 
+2. Navigate to AWS Amplify and create a new project. 
+3. Connect a GitHub repository containing your frontend code (React, Vue, or 
+Next.js). 
+4. Configure Amplify for continuous deployment. 
+
+Step 2: Choose a Headless CMS 
+1. Select a Headless CMS like Strapi, Contentful, or Sanity. 
+2. Create a new project and define content models (e.g., blog posts, pages). 
+3. Publish and retrieve content via the CMS API. 
+
+Step 3: Configure AWS S3 for Static Hosting 
+1. Open the AWS S3 Console and create a new bucket. 
+2. Enable static website hosting in the bucket settings. 
+3. Upload your pre-built static files if using S3 as an alternative deployment 
+option. 
+
+Step 4: Connect CMS with Frontend 
+1. Fetch data from the CMS using REST or GraphQL APIs. 
+2. Display dynamic content on your website using API calls. 
+
+Step 5: Deploy and Test the Website 
+1. Deploy the frontend via AWS Amplify or S3. 
+2. Enable CDN via AWS CloudFront for fast global access. 
+3. Test your website and verify performance. 
+
+Step 6: Set Up Custom Domain and SSL 
+1. Configure a custom domain in AWS Route 53. 
+2. Use AWS Certificate Manager (ACM) to enable HTTPS. 
+
+Conclusion 
+This project helps create a fast, secure, and scalable Jamstack website using AWS 
+services. With AWS Amplify for deployment, a Headless CMS for content 
+management, and S3 for storage, you ensure a seamless user experience

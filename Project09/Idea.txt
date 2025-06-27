@@ -1,0 +1,74 @@
+Project 9: Progressive Web App (PWA) Hosting – Deploy a React or Vue.js 
+PWA on AWS Amplify. 
+Introduction 
+A Progressive Web App (PWA) combines the best of web and mobile applications 
+by offering fast load times, offline support, and a native-like experience. AWS 
+Amplify provides an easy way to deploy and host PWAs built with React or Vue.js, 
+with automatic CI/CD integration. 
+Steps to Deploy a React or Vue.js PWA on AWS Amplify 
+
+Step 1: Prerequisites 
+● AWS account 
+● Node.js installed (check with node -v) 
+● GitHub, GitLab, or Bitbucket repository with a React or Vue.js PWA 
+
+Step 2: Create a React or Vue.js PWA (Optional) 
+For React: 
+sh 
+npx create-react-app my-pwa --template cra-template-pwa 
+cd my-pwa 
+npm start 
+For Vue.js: 
+sh 
+npm create vue@latest my-pwa 
+cd my-pwa 
+npm install 
+npm run dev 
+
+Step 3: Push the Project to GitHub 
+sh 
+git init   
+git add .   
+git commit -m "Initial PWA commit"   
+git branch -M main   
+git remote add origin <your-repository-url>   
+git push -u origin main   
+
+Step 4: Set Up AWS Amplify for Hosting 
+1. Go to AWS Amplify Console 
+○ Navigate to AWS Amplify Console. 
+○ Click "Get Started" under "Deploy". 
+2. Connect to Your Git Repository 
+○ Select GitHub/GitLab/Bitbucket. 
+○ Authenticate and choose your repository. 
+○ Select the branch (e.g., main). 
+3. Configure Build Settings 
+○ AWS Amplify will detect the framework (React/Vue). 
+○ Modify amplify.yml if needed for custom build settings. 
+
+Step 5: Deploy the PWA 
+● Click "Save and Deploy". 
+● AWS Amplify will build and deploy the PWA. 
+● Once deployment is complete, you will get a hosted URL (e.g., 
+https://your-app.amplifyapp.com). 
+
+Step 6: Enable PWA Features in AWS Amplify 
+1. Ensure the Web App Has a Manifest File 
+○ React PWA template includes public/manifest.json. 
+○ Vue.js PWAs should have a manifest.json file in public/. 
+2. Check Service Worker Configuration 
+○ React PWA uses src/service-worker.js. 
+○ Vue.js PWAs can use Workbox for service workers. 
+3. Set Up HTTPS (Mandatory for PWAs) 
+○ AWS Amplify automatically enables HTTPS. 
+○ You can also connect a custom domain. 
+
+Step 7: Verify and Test the PWA 
+● Open the hosted URL in Chrome. 
+● Use Lighthouse in DevTools (Ctrl + Shift + I → "Lighthouse" tab → 
+Generate Report). 
+● Check if the app is installable and supports offline usage. 
+
+Conclusion 
+You have successfully deployed a React or Vue.js PWA on AWS Amplify! This 
+setup ensures seamless CI/CD, HTTPS, and scalability for your PWA 
